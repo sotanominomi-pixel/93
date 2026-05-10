@@ -1,0 +1,453 @@
+body {
+    background-color: #fff; 
+    color: #000; 
+    font-family: 'Roboto', -apple-system, sans-serif; 
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: block; 
+}
+
+.n-clock-app {
+    width: 100%;
+    max-width: 500px; 
+    height: 100vh; 
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    padding-bottom: 130px; 
+}
+
+.tab-bar {
+    position: fixed; 
+    bottom: 50px;
+    width: 100%;
+    max-width: 500px; 
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0; 
+    border-top: 1px solid #ccc;
+    background-color: #f7f7f7;
+    font-weight: 500;
+}
+
+.ad-container-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 500px; 
+    height: 50px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15; 
+    font-size: 12px;
+    color: #888;
+}
+
+.tab-item {
+    background: none;
+    border: none;
+    color: #888; 
+    padding: 10px 18px; 
+    font-size: 16px; 
+    cursor: pointer;
+}
+
+.tab-item.active {
+    color: #000;
+}
+
+.mode-title {
+    font-size: 24px;
+    font-weight: 900; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.clock-display {
+    font-size: 80px;
+    text-align: center;
+    margin: 40px 0;
+    font-weight: 700; 
+    font-variant-numeric: tabular-nums;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 32px;
+    width: 32px; 
+    border-radius: 50%;
+    background: #000;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 31px;
+    float: right; 
+}
+
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s; 
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 27px;
+    width: 27px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s; 
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #000;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.rounded-square-btn {
+    width: 130px; 
+    height: 130px; 
+    border-radius: 30px; 
+    font-weight: 700;
+    font-size: 18px;
+    border: none;
+}
+
+.stopwatch-controls {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.control-button {
+    background-color: #ddd;
+    color: #000;
+}
+
+.control-button.stop {
+    background-color: #000;
+    color: #fff;
+}
+
+.control-button.gray-btn {
+    background-color: #ccc;
+    color: #000;
+}
+
+.action-button {
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+}
+
+.alarm-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    margin-bottom: 8px;
+}
+
+.alarm-time {
+    font-size: 40px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.time-select {
+    font-size: 26px;
+    padding: 5px;
+    margin: 0 5px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    background-color: #fff;
+    font-weight: 700;
+    color: #000;
+}
+
+.save-btn {
+    background-color: #000;
+    color: #fff;
+    margin-left: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.settings-list {
+    list-style: none;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.settings-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    margin-bottom: 10px; 
+    padding: 15px 15px; 
+}
+
+.settings-list li a.settings-link {
+    color: inherit;
+    text-decoration: none;
+    flex-grow: 1;
+    padding-right: 10px;
+}
+
+.settings-list li .disclosure-arrow {
+    font-weight: 900;
+    color: #888;
+}
+
+.segmented-control {
+    font-size: 16px;
+    display: flex;
+    border: 1px solid #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.segment-button {
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.segment-button.active {
+    background-color: #000;
+    color: #fff;
+}
+
+.lap-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.lap-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.accordion-header {
+    background-color: #eee;
+    color: #000;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.accordion-header:hover {
+    background-color: #ddd;
+}
+
+.accordion-icon {
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    border-radius: 0 0 12px 12px;
+}
+
+.accordion-content.open {
+    max-height: 2000px;
+    padding: 18px;
+    border: 1px solid #eee;
+    border-top: none;
+}
+
+.preset-container {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+}
+
+.preset-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.preset-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.save-preset-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #000;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.preset-list {
+    list-style: none;
+    padding: 0;
+}
+
+.preset-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s;
+}
+
+.preset-item:hover {
+    background-color: #f0f0f0;
+}
+
+.preset-name {
+    flex-grow: 1;
+    font-weight: 500;
+}
+
+.preset-value {
+    font-weight: 700;
+    color: #000;
+    margin-right: 15px;
+}
+
+.delete-preset-btn {
+    background: #ff5c5c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pip-button-container {
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.pip-btn {
+    background-color: #444;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* 改良点: スマホ用簡易PiP（フローティングUI）のスタイル */
+.floating-pip {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 130px;
+    height: 75px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    border: 1px solid #555;
+}
+
+#floating-clock-text { font-size: 22px; font-weight: bold; font-variant-numeric: tabular-nums; }
+#floating-n-text { font-size: 12px; color: #bbb; margin-top: 2px; }
+#close-floating-btn {
+    position: absolute; top: -8px; right: -8px; width: 24px; height: 24px;
+    background: #ff4d4d; color: white; border: none; border-radius: 50%;
+    font-size: 16px; font-weight: bold; cursor: pointer;
+}
