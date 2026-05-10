@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>N Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="N Clock">
+</head>
+<body>
+    <div class="n-clock-app">
+        <div id="content-area" class="content-area">
+            <!-- 各モードの内容がここに描画されます -->
+        </div>
+
+        <!-- 改良点: スマホ用フローティングUI（簡易PiP） -->
+        <div id="floating-pip-ui" class="floating-pip" style="display:none;">
+            <div id="floating-clock-text">00:00:00</div>
+            <div id="floating-n-text">N=24</div>
+            <button id="close-floating-btn">×</button>
+        </div>
+
+        <nav class="tab-bar">
+            <button class="tab-item active" id="nav-clock">
+                <div class="label">時計</div>
+            </button>
+            <button class="tab-item" id="nav-stopwatch">
+                <div class="label">SW</div>
+            </button>
+            <button class="tab-item" id="nav-alarm">
+                <div class="label">アラーム</div>
+            </button>
+            <button class="tab-item" id="nav-settings">
+                <div class="label">設定</div>
+            </button>
+        </nav>
+
+        <div class="ad-container-bottom">
+            Sponsored Ad Area
+        </div>
+    </div>
+
+    <video id="pip-video" style="display:none;" playsinline muted></video>
+    <script src="script.js"></script>
+</body>
+</html>
